@@ -1,0 +1,23 @@
+{
+  "name": "nuxt_frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/strapi": "npm:@nuxtjs/strapi-edge@latest",
+    "@types/node": "^20.8.6",
+    "nuxt": "^3.11.1",
+    "nuxt-markdown-render": "latest",
+    "sass": "latest",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vue-tsc": "^1.8.19"
+  }
+}

@@ -1,0 +1,32 @@
+$prime: #00fff1 !default;
+$second: #0c1016 !default;
+$third: #f0f8ff !default;
+$uiOrange: #ff6e48 !default;
+$uiBlue: #4605f8 !default;
+$uiMagenta: #ff00aa !default;
+$uiRed: #ff0051 !default;
+$uiGreen: #46fcb4 !default;
+
+::selection{
+    background-color: $third;
+    color: $second;
+}
+
+body,
+html {
+    background-color: $second;
+    color: $third;
+    &::-webkit-scrollbar {
+        width: 7px;
+        &-track {
+            background: $second;
+        }
+        &-thumb {
+            background: rgba($third, 0.3);
+            border-radius: 10px;
+            &:hover {
+                background: rgba($third, 0.5);
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "fake-riot-login",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:backend": "cd strapi_backend && npm run develop",
+    "dev:frontend": "cd nuxt_frontend && npm run dev",
+    "dev": "concurrently -n BACKEND,FRONTEND -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+
+    "i:backend": "cd strapi_backend && npm i",
+    "i:frontend": "cd nuxt_frontend && npm i",
+    "i": "node ./scripts/install.js",
+
+    "create_backend": "cd strapi_backend && npx create-strapi-app@4.20.5 ./ --no-run --quickstart",
+    "create_backend:custom": "cd strapi_backend && npx create-strapi-app@4.20.5 ./ --no-run",
+
+    "setup": "npm i && node scripts/setup.js",
+    "setup:custom": "npm i && node scripts/custom_setup.js",
+    
+    "build:frontend": "cd nuxt_frontend && npm run build",
+    "build": "node ./scripts/build.js"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "concurrently": "^8.2.1",
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^11.2.0"
+  },
+  "engines": {
+    "node": ">=18.x.x <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "keywords": [
+    "nuxt",
+    "nuxt.js",
+    "strapi",
+    "webdevelopment",
+    "js",
+    "javascript",
+    "ts",
+    "typescript",
+    "fullstack",
+    "server",
+    "ssr"
+  ]
+}
