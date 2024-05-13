@@ -17,7 +17,7 @@
     "setup:custom": "npm i && node scripts/custom_setup.js",
     
     "build:frontend": "cd nuxt_frontend && npm run build",
-    "build": "node ./scripts/build.js"
+    "build": "npm run i && node ./scripts/build.js"
   },
   "devDependencies": {
     "chalk": "^2.4.2",

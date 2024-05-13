@@ -4,12 +4,8 @@ const chalk = require('chalk');
 
 console.log(chalk.bold.hex('#EAEBFA')('Starting tests to check for `npm run build`-compatibility...'));
 
-const command = 'npm';
+const command = 'concurrently';
 const args = [
-    'run',
-    'i',
-    '&&',
-    'concurrently',
     '-n',
     'STR_BACKEND_DIR,NUXT_FRONTEND_DIR',
     '-c',
@@ -38,13 +34,9 @@ function runBuild() {
 
 function colourReplacement() {
     console.log(chalk.bold.hex('#EA1848')('⚠   Error. Switching to compatibility-mode ...'));
-    const command = 'npm';
+    const command = 'concurrently';
     const crSpawn = require('cross-spawn');
     const args = [
-        'run',
-        'i',
-        '&&',
-        'concurrently',
         '-n',
         'STR_BACKEND_DIR,NUXT_FRONTEND_DIR',
         '-c',
