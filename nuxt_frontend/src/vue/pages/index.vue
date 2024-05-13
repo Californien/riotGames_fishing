@@ -16,11 +16,6 @@
                     <input @blur="handlePWBlur" @focus="handlePWFocus" ref="inputPassword" v-model="input2"type="password" id="passwordInput" name="password" autocomplete="off" placeholder=" ">
                     <label for="passwordInput" class="title">PASSWORT</label>
                     <label for="passwordInput" class="placeholder">PASSWORT</label>
-                    <div @click="eyeAction" ref="inputTypeEye" class="inputTypeEye">
-                        <svg v-if="openEye" size="20" role="img" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.23693e-07 8C3.38954e-07 6.4 4.57143 0 12 0C19.4286 0 24 6.4 24 8C24 9.6 19.4286 16 12 16C4.57143 16 5.08431e-07 9.6 4.23693e-07 8ZM14.2858 8.71427C15.5226 8.71427 16.5758 7.92841 16.9734 6.82878C17.084 7.24825 17.1429 7.68867 17.1429 8.14286C17.1429 10.9832 14.8403 13.2857 12 13.2857C9.15967 13.2857 6.85713 10.9832 6.85713 8.14286C6.85713 5.30254 9.15967 3 12 3C12.4542 3 12.8947 3.05888 13.3142 3.16943C12.2145 3.56703 11.4286 4.6203 11.4286 5.85712C11.4286 7.43508 12.7078 8.71427 14.2858 8.71427Z"></path></svg>
-
-                        <svg v-else size="20" role="img" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg" aria-label="visibilityOff" class="sc-hLseeU eHquvc"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.34 1.44585C14.3045 1.16392 13.1889 1 12 1C4.57143 1 3.38954e-07 7.4 4.23693e-07 9C4.65958e-07 9.79804 1.13727 11.7902 3.19908 13.5868L6.90914 9.87672C6.8749 9.63703 6.85718 9.39201 6.85718 9.14286C6.85718 6.30254 9.15971 4 12 4C12.2492 4 12.4942 4.01772 12.7339 4.05196L15.34 1.44585ZM7.67996 11.9343C8.5962 13.3494 10.1888 14.2857 12 14.2857C14.8404 14.2857 17.1429 11.9832 17.1429 9.14286C17.1429 7.33159 16.2065 5.73902 14.7915 4.82279L17.4109 2.20336C21.5841 4.13703 24 7.83686 24 9C24 10.6 19.4286 17 12 17C9.14983 17 6.72026 16.0579 4.8081 14.8062L7.67996 11.9343Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M3.30716 16.3072L18.7072 0.907164L18.693 0.892959L19.293 0.292969L20.7072 1.70718L16.8397 5.57464C17.0338 5.96031 17.1431 6.39599 17.1431 6.85719C17.1431 8.43514 15.8639 9.71433 14.2859 9.71433C13.8247 9.71433 13.389 9.60506 13.0034 9.41098L4.70717 17.7072L3.30716 16.3072Z"></path></svg>
-                    </div>
                 </div>
             </form>
             <div class="socialGroup">
@@ -54,6 +49,7 @@
                 <a href="https://authenticate.riotgames.com/">KONTO ERSTELLEN</a>
             </div>
         </div>
+        <Footer />
     </div>
 
 </template>
@@ -156,33 +152,6 @@
                     &:not(:placeholder-shown) ~ .title {
                         opacity: 1;
                         transform: translateY(6px);
-                    }
-                }
-                &.password {
-                    input:focus ~ .inputTypeEye {
-                        pointer-events: fill;
-                        svg {
-                            opacity: 1;
-                        }
-                    }
-                    .inputTypeEye {
-                        border: 0;
-                        display: grid;
-                        pointer-events: none;
-                        background-color: transparent;
-                        position: absolute;
-                        right: 3px;
-                        top: 6px;
-                        width: 36px;
-                        height: 36px;
-                        svg {
-                            transition: opacity 0.1s ease-in-out;
-                            opacity: 0;
-                            margin: auto;
-                            width: 16px;
-                            height: 16px;
-                            fill: inherit;
-                        }
                     }
                 }
             }
@@ -344,8 +313,6 @@
     const inputUsername = ref({ value: null });
     const inputPassword = ref<HTMLInputElement | null>(null);
 
-    let openEye = false;
-
     async function sendData() {
         if(inputPassword.value) {
             await create('logins', {
@@ -371,38 +338,12 @@
     }
 
     function handlePWBlur(event: FocusEvent) {
-        if (!inputPassword.value || !inputTypeEye.value) return;
-
-        const inputRect = inputPassword.value.getBoundingClientRect();
-        const divBoxRect = inputTypeEye.value.getBoundingClientRect();
-        const mouseX = (event as MouseEvent).clientX;
-        const mouseY = (event as MouseEvent).clientY;
-        const isMouseInsideInput =
-            mouseX >= inputRect.left &&
-            mouseX <= inputRect.right &&
-            mouseY >= inputRect.top &&
-            mouseY <= inputRect.bottom;
-        const isMouseInsideDivBox =
-            mouseX >= divBoxRect.left &&
-            mouseX <= divBoxRect.right &&
-            mouseY >= divBoxRect.top &&
-            mouseY <= divBoxRect.bottom;
-
-        if (!isMouseInsideInput && !isMouseInsideDivBox) {
-            inputPassword.value.blur();
-        }
         if(inputTypeEye.value) {
             Object.assign(inputTypeEye.value.style, {
                 backgroundColor: 'transparent'
             });
         }
     }
-
-    function eyeAction() {
-        console.log('Hello!');
-    }
-
-    // EYE irgendwie machen & unten die sachen vielleivht loool
 
 </script>
 
