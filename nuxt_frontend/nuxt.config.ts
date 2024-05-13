@@ -39,7 +39,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: {},
     head: {
-      title: undefined, /* <-- replace `undefined` with your individual site-name */
+      title: 'RiotGames Login', /* <-- replace `undefined` with your individual site-name */
       script: [
         { src: 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js', type: 'module' },
         { src: 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js', nomodule: true }
