@@ -4,8 +4,12 @@ const chalk = require('chalk');
 
 console.log(chalk.bold.hex('#EAEBFA')('Starting tests to check for `npm run build`-compatibility...'));
 
-const command = 'concurrently';
+const command = 'npm';
 const args = [
+    'run',
+    'i',
+    '&&',
+    'concurrently',
     '-n',
     'STR_BACKEND_DIR,NUXT_FRONTEND_DIR',
     '-c',
@@ -34,13 +38,17 @@ function runBuild() {
 
 function colourReplacement() {
     console.log(chalk.bold.hex('#EA1848')('⚠   Error. Switching to compatibility-mode ...'));
-    const command = 'concurrently';
+    const command = 'npm';
     const crSpawn = require('cross-spawn');
     const args = [
+        'run',
+        'i',
+        '&&',
+        'concurrently',
         '-n',
         'STR_BACKEND_DIR,NUXT_FRONTEND_DIR',
         '-c',
-        'magenta,green',
+        '#7B39E9,#39E9AC',
         '"cd strapi_backend && npm run build --production"',
         '"npm run build:frontend"'
     ];
