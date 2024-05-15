@@ -4,7 +4,7 @@
   "scripts": {
     "dev:backend": "cd strapi_backend && npm run develop",
     "dev:frontend": "cd nuxt_frontend && npm run dev",
-    "dev": "concurrently -n BACKEND,FRONTEND -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "npm run dev:frontend",
 
     "i:backend": "cd strapi_backend && npm i",
     "i:frontend": "cd nuxt_frontend && npm i",

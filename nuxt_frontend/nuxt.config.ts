@@ -47,24 +47,6 @@ export default defineNuxtConfig({
     }
   },
 
-  // Modules & Plugins
-  modules: [ '@nuxtjs/strapi', 'nuxt-markdown-render' ],
-  plugins: [],
-
-  // Module settings
-  // -> Strapi
-  strapi: { url: process.env.STRAPI_URL || 'http://localhost:1337' },
-
-  // -> NuxtMarkdownRender
-  nuxtMarkdownRender: {
-    as: 'article',
-    component: 'Markdown',
-    options: {
-      html: true
-    },
-    global: true
-  },
-
   // Custom elements (enabling `ion-icon`)
   vue: {
     compilerOptions: {

