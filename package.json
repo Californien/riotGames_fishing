@@ -10,7 +10,7 @@
 
     "i:backend": "cd strapi_backend && npm i",
     "i:frontend": "cd nuxt_frontend && npm i",
-    "i": "node ./scripts/install.js",
+    "i": "npm i && node ./scripts/install.js",
 
     "create_backend": "cd strapi_backend && npx create-strapi-app@4.20.5 ./ --no-run --quickstart",
     "create_backend:custom": "cd strapi_backend && npx create-strapi-app@4.20.5 ./ --no-run",
