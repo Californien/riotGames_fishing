@@ -6,6 +6,8 @@
     "dev:frontend": "cd nuxt_frontend && npm run dev",
     "dev": "npm run dev:frontend",
 
+    "dev:production": "cd nuxt_frontend && node main.js",
+
     "i:backend": "cd strapi_backend && npm i",
     "i:frontend": "cd nuxt_frontend && npm i",
     "i": "node ./scripts/install.js",
@@ -17,7 +19,8 @@
     "setup:custom": "npm i && node scripts/custom_setup.js",
     
     "build:frontend": "cd nuxt_frontend && npm run build",
-    "build": "npm run i && node ./scripts/build.js && npm run dev"
+    "build": "npm run i && node ./scripts/build.js && npm run dev",
+    "preview_of_website": "cd nuxt_frontend && npm run preview"
   },
   "devDependencies": {
     "chalk": "^2.4.2",
